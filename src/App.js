@@ -1,21 +1,38 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import Header from './components/Header';
+import Main from './components/Main';
+import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
 
-class App extends Component {
-  render() {
+import './css/App.css';
+import {
+  BrowserRouter as Router,
+  Route
+} from 'react-router-dom';
+
+
+
+class App extends React.Component {
+  render(props) {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
+      <Router>
+        <ScrollToTop>
+          <Route render={ () => (
+            <div className="app">
+              
+              <Header {...this.props} />
+
+              <Main {...this.props} />
+
+              <Footer />
+              
+            </div>
+          )}/>
+        </ScrollToTop>
+      </Router>
+    )
   }
 }
 
-export default App;
+
+export default App
